@@ -8,11 +8,13 @@ export default function FreelasSection() {
     //* exibir cta de contrate um freelancer caso modo do perfil seja contratante
     return (
         <section className="w-full h-full min-h-screen bg-neutral-900">
-            <h1 className="text-center text-white text-7xl font-thin p-10">
-                Freelances disponiveis
+            <h1 className="text-center text-white text-xl sm:text-7xl font-thin p-10">
+                Profissionais disponiveis
             </h1>
 
-            
+            <div>
+
+            </div>
         </section>
     )
 }
