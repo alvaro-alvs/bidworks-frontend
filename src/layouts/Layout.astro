@@ -1,5 +1,22 @@
 ---
+import Navbar from "@/components/islands/global/navbar/Navbar";
 import "../styles/global.css";
+import getUserCookie from "@/services/getUserCookies.service";
+import { Toaster } from "@/components/ui/sonner";
+
+const cookies = Astro.cookies;
+
+const data = await getUserCookie({ cookies: cookies });
+
+if (data) {
+	console.log(data);
+}
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,10 +26,14 @@ import "../styles/global.css";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>BidWork</title>
+		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar client:load />
+
 		<slot />
+
+		<Toaster  richColors client:load />
 	</body>
 </html>
 
@@ -23,5 +44,6 @@ import "../styles/global.css";
 		width: 100%;
 		height: 100%;
 		background-color: #ddd6cc;
+		font-family: "Inter", sans-serif;
 	}
 </style>

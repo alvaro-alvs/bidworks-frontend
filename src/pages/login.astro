@@ -1,0 +1,24 @@
+---
+import LoginForm from "@/components/islands/home/sign-up/login-form/LoginForm";
+import LoginProvider from "@/components/islands/home/sign-up/login-form/LoginProvider";
+import Layout from "@/layouts/Layout.astro";
+
+const google_client_id = import.meta.env.GOOGLE_CLIENT_ID
+---
+
+
+<Layout title="Login">
+    <section class="flex flex- w-full h-full justify-center items-center gap-4">
+
+        <div class="w-full flex sm:flex-row flex-col justify-center items-center rounded p-3">
+            <h1 class="sm:text-5xl text-xl max-w-md">
+                Entre agora e acesse um mundo de <b>oportunidades</b> ilimitadas
+            </h1>
+    
+            <div class="w-full max-w-sm">
+                <LoginProvider google_client_id={google_client_id} client:load />
+            </div>
+
+        </div>
+    </section>
+</Layout>

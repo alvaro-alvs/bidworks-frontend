@@ -1,7 +1,8 @@
 
 import BidWorkMark from "@/assets/mark/bid-work-mark.svg";
+import BidWorksMark from "@/assets/mark/BidWorks.svg"
 import { useState } from "react";
-import LoginModal from "../cta-modal/login/LoginModal";
+import LoginModal from "../../cta-modal/login/LoginModal";
 
 
 
@@ -13,13 +14,13 @@ export default function HeroSection() {
 
 
     return (
-        <main className="w-full flex flex-col justify-center h-full pt-24">
+        <main className="w-full flex flex-col justify-center h-[90vh] pt-24">
             <figure
                 className="w-full flex flex-col items-center justify-center mt-24 h-max p-3"
             >
                 <img
-                    className="w-full md:max-w-md max-w-sm select-none"
-                    src={BidWorkMark.src}
+                    className="w-full md:max-w-md max-w-sm select-none mb-24"
+                    src={BidWorksMark.src}
                     alt=""
                 />
 
