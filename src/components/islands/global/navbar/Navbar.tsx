@@ -31,7 +31,7 @@ export default function Navbar() {
         }
 
         return (
-            <ul className="flex md:flex-row flex-col md:space-x-5 space-y-5 md:space-y-0 w-full *:hover:text-blue-500 *:cursor-pointer">
+            <ul className="flex md:flex-row flex-col md:space-x-5 space-y-5 md:space-y-0 w-full *:hover:text-neutral-500 *:cursor-pointer">
                 <NavButton href="/" label="Home" icon={<GoHomeFill />} />
 
                 <NavButton label="Encontrar trabalhos" icon={<BiSolidFileFind />} />
@@ -40,7 +40,7 @@ export default function Navbar() {
 
                 <NavButton label="Sobre nós" icon={<MdWorkHistory />} />
 
-                <NavButton href="/login" className="border rounded-lg p-2 px-4 border-blue-600 text-blue-600 hover:text-blue-500 hover:border-blue-600 transition cursor-pointer" label="Entrar" icon={<FiLogIn />} />
+                <NavButton href="/login" className="border rounded-lg p-2 px-4 border-neutral-700 text-neutral-900 hover:text-neutral-200 hover:-translate-y-2 hover:shadow-[0_8px_0_#737373] active:shadow-[0_0_0_#737373] active:hover:translate-y-0 transition cursor-pointer" label="Entrar" icon={<FiLogIn />} />
             </ul>
         )
     }

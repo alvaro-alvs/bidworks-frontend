@@ -1,7 +1,7 @@
 
 
 
-export default async function LoginUsuario({ email, password }: { email: string, password: string }): Promise<{ status: 'ok' | 'error', data: any }> {
+export default async function LoginUsuario({ email, password }: { email: string, password: string }): Promise<{ status: 'success' | 'error', user: any, message?: string }> {
 
     const res = await fetch('/api/login/email', {
         method: 'POST',
@@ -17,8 +17,8 @@ export default async function LoginUsuario({ email, password }: { email: string,
     if (res.ok) {
         const data = await res.json()
 
-        return { status: 'ok', data: data }
+        return { status: data.status, user: data.user }
     }
 
-    return { status: 'error', data: null }
+    return { status: 'error', user: null, message: 'Email ou senha incorretos' }
 }

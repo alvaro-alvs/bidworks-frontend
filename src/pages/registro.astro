@@ -1,0 +1,34 @@
+---
+import RegisterForm from "@/components/islands/sign-up/register/register-form/RegisterForm";
+import Layout from "@/layouts/Layout.astro";
+const GOOGLE_CLIENT_ID = import.meta.env.GOOGLE_CLIENT_ID
+
+
+---
+
+<Layout title="Registro bidWorks">
+    <section class="w-full flex flex-col items-center py-24">
+        <RegisterForm google_client_id={GOOGLE_CLIENT_ID} client:load />
+    
+    </section>
+</Layout>
+
+<style is:global>
+    fieldset {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: large;
+        /* gap: 0.5rem; */
+    }
+    label {
+        font-weight: 500;
+    }
+    input {
+        padding: 0.5rem;
+        width: 100%;
+        font-size: small;
+        background-color: #bdb7ae;
+        border-radius: .25rem;
+    }
+</style>

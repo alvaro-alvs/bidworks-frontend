@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm"
 
 
 //* Componente wrapper do Formulario de Login, contento a logica do componente
-export default function LoginProvider({ google_client_id }: { google_client_id: string }) {
+export default function LoginProvider({ google_client_id }: { google_client_id: string }) { //* tamo circulando tamo circulando
     const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
@@ -14,8 +14,6 @@ export default function LoginProvider({ google_client_id }: { google_client_id: 
     })
 
     return (
-        <GoogleOAuthProvider clientId={google_client_id}>
-            <LoginForm loginForm={loginForm} setLoginForm={setLoginForm} />
-        </GoogleOAuthProvider>
+        <LoginForm google_client_id={google_client_id} loginForm={loginForm} setLoginForm={setLoginForm} />
     )
 }
