@@ -8,6 +8,8 @@ const cookies = Astro.cookies;
 
 const data = await getUserCookie({ cookies: cookies });
 
+const locals = Astro.locals
+
 if (data) {
 	console.log(data);
 }

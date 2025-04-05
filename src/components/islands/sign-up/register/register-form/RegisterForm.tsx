@@ -25,7 +25,7 @@ export default function RegisterForm({ google_client_id }: { google_client_id: s
             email: "",
             password: "",
         },
-        etapa: 1,
+        etapa: 0,
         isDev: false,
         isCliente: false
     })

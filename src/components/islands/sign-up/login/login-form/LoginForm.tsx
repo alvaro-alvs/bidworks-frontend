@@ -21,7 +21,7 @@ export default function LoginForm({ loginForm, setLoginForm, google_client_id }:
 
         if (status === 'success') {
             
-            console.log(user);
+            window.location.href = '/perfil'
             toast.success(`Bem vindo(a), ${user.nome} ${user.sobrenome}`, { position: 'top-center' })
         } else {
             toast.warning('Email não cadastrado', { position: 'top-center' })

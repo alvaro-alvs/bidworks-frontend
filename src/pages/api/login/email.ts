@@ -6,7 +6,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const body = await request.json()
 
     if (body) {
-
+        console.log(body)
         const res = await fetch(import.meta.env.DEV_URL + "login/", {
             method: 'POST',
             headers: {
@@ -18,18 +18,19 @@ export const POST: APIRoute = async ({ request, cookies }) => {
         if (res.ok) {
             const res_data = await res.json()
 
-            
-            const token = jwt.sign(res_data.user, res_data.token)
-            
-            console.log('novo jwt: ', token)
-            
-            cookies.set('usuario', token, {
-                path: '/',
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+            // console.log(res_data)
+            cookies.set('auth_token', res_data.tokens.access, {
+                httpOnly: true,
                 secure: true,
-                httpOnly: true
+                path: "/",
             })
 
+            cookies.set('u', jwt.sign(res_data.user, import.meta.env.JWT_SECRET), {
+                httpOnly: true,
+                secure: true,
+                path: "/",
+            })
+            
             return new Response(JSON.stringify(res_data))
         } else {
             return new Response(JSON.stringify({ 'auth': false, message: res.statusText }), { status: 401 })
