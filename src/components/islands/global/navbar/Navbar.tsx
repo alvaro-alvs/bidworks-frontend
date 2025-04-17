@@ -1,5 +1,4 @@
 import BidWorksMark from "@/assets/mark/BidWorks.svg"
-import LoginModal from "../../cta-modal/login/LoginModal";
 import { useState } from "react";
 import {
     Popover,
