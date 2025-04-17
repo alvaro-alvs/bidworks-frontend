@@ -56,7 +56,7 @@ export default function Navbar({ usuario }: { usuario: UsuarioProp }) {
                 <span onClick={() => {
                     window.location.replace("/");
                 }} className="space-y-1 hover:scale-105 transition ease-in-out cursor-pointer hover:brightness-125">
-                    <img className="w-full max-w-[8rem]" src={BidWorksMark.src} alt="" />
+                    <img className="w-full max-w-[8rem]" src="https://placehold.co/200x50/ddd6cc/000000?text=BidWorks" alt="BidWorks Logo" />
                     <p className="text-black text-xs">
                         {usuario && `Saudações, ${usuario.first_name} ${usuario.last_name}`}
                     </p>
