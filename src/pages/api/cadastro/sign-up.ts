@@ -8,7 +8,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const DEV_URL = import.meta.env.DEV_URL
 
     if (body) {
-        const res = await fetch(DEV_URL + "sign-up/", {
+        const res = await fetch(PROD_URL + "sign-up/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
