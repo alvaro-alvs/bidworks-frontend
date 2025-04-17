@@ -37,8 +37,6 @@ export default function Navbar({ usuario }: { usuario: UsuarioProp }) {
     }
 
     const NavContent = () => {
-
-
         return (
             <ul className="flex md:flex-row flex-col md:space-x-5 space-y-5 md:space-y-0 w-full *:hover:text-neutral-500 *:cursor-pointer">
                 <NavButton href="/" label="Home" icon={<GoHomeFill />} />
