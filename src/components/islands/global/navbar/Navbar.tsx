@@ -1,4 +1,3 @@
-import BidWorksMark from "@/assets/mark/BidWorks.svg"
 import { useState } from "react";
 import {
     Popover,
