@@ -1,10 +1,14 @@
 import type { APIRoute } from "astro";
+import jwt from "jsonwebtoken"
+
 
 export const POST: APIRoute = async ({ request, cookies }) => {
     const body = await request.json()
+    const PROD_URL = import.meta.env.PROD_URL
+    const DEV_URL = import.meta.env.DEV_URL
 
     if (body) {
-        const res = await fetch(import.meta.env.DEV_URL + "sign-up/", {
+        const res = await fetch(DEV_URL + "sign-up/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -14,19 +18,25 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
         const userData = await res.json()
 
+        // console.log(userData)
+
         if (res.ok) {
 
-            cookies.set('userData', userData, {
+            cookies.set('u', jwt.sign(userData.usuario, import.meta.env.JWT_SECRET), {
                 path: '/',
-                expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+                httpOnly: true,
+            })
+
+            cookies.set('auth_token', userData.tokens.access, {
+                path: '/',
+                httpOnly: true,
                 secure: true,
-                httpOnly: true
             })
 
             return new Response(JSON.stringify(userData), {
                 status: 201,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 statusText: 'Created'
             })
@@ -50,7 +60,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
             return new Response(JSON.stringify({
                 message: error_msg,
-                errorDetails: userData.status // Opcional: enviar detalhes para debug
+                errorDetails: userData.status // detalhes para debug
             }), {
                 status: 400,
                 headers: {

@@ -30,6 +30,7 @@ export default function RegisterForm({ google_client_id }: { google_client_id: s
         isCliente: false
     })
 
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleChange = ({ e, field }: { e: string, field: string }) => {
         setRegData({ ...regData, userData: { ...regData.userData, [field]: e } })
@@ -74,50 +75,55 @@ export default function RegisterForm({ google_client_id }: { google_client_id: s
     }
 
     const handleContinue = async () => {
+        setIsLoading(true)
         if (!validateReg()) {
+            setIsLoading(false)
             return
         }
 
-        const res = await registerUsuarioService({ usuario: regData.userData })
+        const res = await registerUsuarioService(regData.userData)
 
         if (res.status === 'error') {
             toast.warning(res.message)
+            setIsLoading(false)
             return
         }
 
         if (res.status === 'ok') {
             setRegData({ ...regData, etapa: 1 })
+            window.location.replace("/perfil")
         }
+
+        setIsLoading(false)
     }
 
     return (
         <ProviderRegisterForm regData={regData} setRegData={setRegData}>
-            <div className="p-5 flex flex-col gap-5 w-full max-w-md overflow-hidden text-black border border-dashed border-neutral-900 rounded">
+            <div className="bg-white text-neutral-900 flex flex-col gap-5 p-5 border-neutral-400 rounded-lg shadow-lg shadow-black/20">
                 {regData.etapa === 0 && (
                     <>
+                        <header className="space-y-2 mb-2.5">
+                            <h1 className="text-2xl font-bold text-neutral-800">Crie sua conta</h1>
+                            <p className="text-neutral-600 text-xs">Cadastre-se e comece a usar nossos serviços</p>
+                        </header>
+
                         <UserRegisterFields handleChange={handleChange} />
 
                         <footer className="w-full flex flex-col gap-2 items-center">
                             <GoogleLoginProvider google_client_id={google_client_id}>
                                 <BidWorksButton
-                                    className={regData.etapa > 0 && 'justify-center'}
-                                    onClick={() => handleContinue()}
+                                    className={`font-bold text-xl p-2 border-2 border-neutral-900 w-full rounded hover:bg-neutral-800 hover:text-white transition cursor-pointer ${regData.etapa > 0 && 'justify-center'}`}
+                                    onClick={handleContinue}
+                                    isLoading={isLoading}
                                     label="Continuar"
-                                >
-                                    {regData.etapa === 0 &&
-                                        <>
-                                            <FaArrowRight />
-                                            <span className="text-xs text-neutral-500">Continuar</span>
-                                        </>
-                                    }
-                                </BidWorksButton>
+                                />
 
                                 <p className="text-sm">Ou cadastre-se com google</p>
 
                                 <GoogleLoginButton />
                             </GoogleLoginProvider>
 
-                            <a className="text-xs text-neutral-900 hover:underline mt-5" href="/login">Já possui uma conta? Faça Login</a>
+                            <a className="text-neutral-800 underline text-xs text-center mt-5" href="/login">Já possui uma conta? Faça Login</a>
                         </footer>
                     </>
                 )}

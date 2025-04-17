@@ -4,17 +4,26 @@ import getUserCookie from "@/services/getUserCookies.service";
 
 const cookies = Astro.cookies
 
-const usuario: any = await getUserCookie({cookies: cookies})
+const usuario: any = getUserCookie({cookies: cookies})
 
+
+const userName = usuario?.first_name ? `${usuario.first_name} ${usuario.last_name}` : 'Novo usuário'
+
+console.log(usuario)
 ---
 
-<Layout title={`Perfil ${usuario?.first_name + " " + usuario?.last_name} - bidWorks`}>
+<Layout title={`Perfil ${userName || 'Novo usuário'} - bidWorks`}>
     <section class="flex flex-col justify-center items-center py-24 w-full">
         
         <div class="flex flex-col gap-10 w-full h-full sm:p-10 p-5">
-            
-            <h1 class="text-3xl">Olá {usuario?.first_name + " " + usuario?.last_name}!</h1>
-            
+            {usuario ? 
+                <h1 class="text-3xl">Olá {userName}!</h1>
+                <button onclick="window.location.replace('/api/login/logout')" class="bg-red-500 border border-red-700 text-white text-xs p-2 rounded-md max-w-xs cursor-pointer hover:bg-red-600 transition">
+                    Sair
+                </button>
+                :
+                <h1 class="text-3xl">Faça login para continuar</h1>
+            }
         </div>
     </section>
 </Layout>

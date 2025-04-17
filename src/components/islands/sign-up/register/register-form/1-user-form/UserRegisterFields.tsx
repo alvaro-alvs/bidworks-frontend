@@ -20,21 +20,20 @@ export const UserRegisterFields = ({ handleChange }: { handleChange }) => {
 
     return (
         <>
-            <h1 className="text-3xl font-semibold mb-5">Crie sua conta</h1>
             <span className="w-full flex gap-10">
                 <fieldset>
                     <label htmlFor="">Nome</label>
-                    <input onChange={(e) => handleChange({ e: e.target.value, field: "first_name" })} value={name_value} type="text" maxLength={15} />
+                    <input onChange={(e) => handleChange({ e: e.target.value, field: "first_name" })} value={name_value} type="text" maxLength={15} className="p-2 bg-white border-b border-neutral-900 focus:outline-none text-sm" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="">Sobrenome</label>
-                    <input onChange={(e) => handleChange({ e: e.target.value, field: "last_name" })} value={lastName_value} type="text" maxLength={15} />
+                    <input onChange={(e) => handleChange({ e: e.target.value, field: "last_name" })} value={lastName_value} type="text" maxLength={15} className="p-2 bg-white border-b border-neutral-900 focus:outline-none text-sm" />
                 </fieldset>
             </span>
 
             <fieldset>
                 <label htmlFor="">Email</label>
-                <input onChange={(e) => handleChange({ e: e.target.value, field: "email" })} value={email_value} type="email" />
+                <input onChange={(e) => handleChange({ e: e.target.value, field: "email" })} value={email_value} type="email" className="text-sm p-2 bg-white border-b border-neutral-900 focus:outline-none" />
             </fieldset>
 
             <fieldset>
@@ -47,18 +46,19 @@ export const UserRegisterFields = ({ handleChange }: { handleChange }) => {
                         id="password"
                         name="password"
                         placeholder="Sua senha"
-                        className="p-2 w-full rounded-l !rounded-r-none text-white"
+                        className="p-2 w-full bg-white border-b border-neutral-900 focus:outline-none text-sm"
                     />
                     <button
                         onClick={() => setViewP(!viewP)}
-                        className="h-full p-2 bg-[#bdb7ae] rounded-r text-white cursor-pointer"
+                        className="h-full p-2 bg-white border-b border-neutral-900 cursor-pointer text-sm"
                     >
                         {viewP ? <FaEyeSlash /> : <FaEye />}
                     </button>
                 </span>
             </fieldset>
 
-            <fieldset>
+            
+            <fieldset className="!hidden"> {/* implementar depois */}
                 <h3>Qual o seu objetivo?</h3>
 
                 <span className="flex items-center gap-2 mb-2">

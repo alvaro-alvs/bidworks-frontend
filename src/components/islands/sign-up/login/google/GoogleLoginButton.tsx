@@ -1,6 +1,7 @@
 import googleOAuthService from "@/services/google-oauth.service";
 import { useGoogleLogin } from "@react-oauth/google";
 import GoogleIcon from "@/assets/icons/Google.svg"
+import { toast } from "sonner";
 
 
 export default function GoogleLoginButton() {
@@ -10,14 +11,17 @@ export default function GoogleLoginButton() {
             const { status, data } = await googleOAuthService({ access_token: codeData.access_token })
 
             if (status === 'ok') {
-                console.log(data);
+                // console.log(data);
+                window.location.replace('/perfil')
             } else {
                 window.alert('Login Failed')
+                toast.warning('Erro ao realizar login, tente novamente mais tarde')
             }
         },
         onError: () => {
-            console.log('Login Failed');
+            // console.log('Login Failed');
             window.alert('Login Failed 2')
+            toast.warning('Erro ao realizar login, tente novamente mais tarde')
         },
     });
 

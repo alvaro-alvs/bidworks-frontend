@@ -6,13 +6,15 @@ import { Toaster } from "@/components/ui/sonner";
 
 const cookies = Astro.cookies;
 
-const data = await getUserCookie({ cookies: cookies });
+const data: any = await getUserCookie({ cookies: cookies });
 
 const locals = Astro.locals
 
-if (data) {
-	console.log(data);
-}
+// if (data) {
+// 	console.log(data);
+// } else {
+// 	console.log('erro ao obter tokens')
+// }
 
 interface Props {
 	title: string;
@@ -31,7 +33,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<Navbar client:load />
+		<Navbar usuario={data} client:load />
 
 		<slot />
 
