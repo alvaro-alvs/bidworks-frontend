@@ -1,6 +1,5 @@
 
-import BidWorkMark from "@/assets/mark/bid-work-mark.svg";
-import BidWorksMark from "@/assets/mark/BidWorks.svg"
+// import BidWorksMark from "@/assets/mark/BidWorks.svg"
 import { useState } from "react";
 import LoginModal from "../../cta-modal/login/LoginModal";
 
@@ -20,7 +19,7 @@ export default function HeroSection() {
             >
                 <img
                     className="w-full md:max-w-md max-w-sm select-none mb-24"
-                    src={BidWorksMark.src}
+                    src="https://placehold.co/200x50/ddd6cc/000000?text=BidWorks"
                     alt=""
                 />
 
