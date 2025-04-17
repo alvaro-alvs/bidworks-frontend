@@ -28,7 +28,6 @@ export default function LoginForm({ loginForm, setLoginForm, google_client_id }:
                 toast.warning('Email não cadastrado', { position: 'top-center' })
             }
         } catch (error) {
-            console.error('Login error:', error)
             toast.error('Ocorreu um erro ao tentar fazer login. Por favor, tente novamente.', { position: 'top-center' })
         } finally {
             setIsLoading(false)

@@ -22,9 +22,6 @@ export default function HomeLayout({ children, onMouseEnter, className }: { chil
     //* chama a api intermediaria
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        console.log(e)
-
     }
 
     return (
